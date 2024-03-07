@@ -1,0 +1,51 @@
+---
+import NextJS from "../components/icons/NextJS.astro";
+import Tailwind from "../components/icons/TailwindCSS.astro";
+const TAGS = {
+    NEXT: {
+        name: "Next.js",
+        class: "bg-black text-white",
+        icon: NextJS
+    },
+    TAILWIND: {
+        name: "Tailwind",
+        class: "bg-white text-[#7]",
+        icon: Tailwind
+    }
+}
+const PROJECTS = [
+    {
+        title: "ACME - Dashboard",
+        description:
+            "App para el manejo de pago de facturas creado para practicar fundamentos basicos de Next.js",
+        link: "https://nextjs-dashboard-indol-ten-74.vercel.app/dashboard",
+        github: "https://github.com/AJLS05/nextjs-dashboard",
+        image: "/projects/Dashboard_Capture.webp",
+        tags: [TAGS.NEXT, TAGS.TAILWIND],
+    },
+];
+---
+
+{
+    PROJECTS.map(({ image, title, description, tags }) => (
+        <article>
+            <h3 class="text-3xl font-semibold text-blue-200 mb-2">{title}</h3>
+            <p class="text-lg mb-4 text-pretty">{description}</p>
+            <ul >
+                {tags.map((tag) => (
+                    <li>
+                        <span class="inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-sm font-medium ${tag.class}">
+                            <tag.icon class="size-8" />
+                            {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img
+                class="rounded shadow-2xl shadow-white/10 shadow-blur "
+                src={image}
+                alt={`Captura de pantalla del proyecto ${image}`}
+            />
+        </article>
+    ))
+}
