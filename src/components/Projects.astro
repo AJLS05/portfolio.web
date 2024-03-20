@@ -1,6 +1,8 @@
 ---
 import NextJS from "../components/icons/NextJS.astro";
 import Tailwind from "../components/icons/TailwindCSS.astro";
+import React from "../components/icons/React.astro";
+import Bootstrap from "../components/icons/Bootstrap.astro";
 const TAGS = {
     NEXT: {
         name: "Next.js",
@@ -11,7 +13,18 @@ const TAGS = {
         name: "Tailwind",
         class: "bg-white text-[#7]",
         icon: Tailwind
+    },
+    REACT: {
+        name: "React",
+        class: "bg-white text-[#7]",
+        icon: React
+    },
+    BOOTSTRAP: {
+        name: "Tailwind",
+        class: "bg-white text-[#7]",
+        icon: Bootstrap
     }
+    
 }
 const PROJECTS = [
     {
@@ -23,15 +36,25 @@ const PROJECTS = [
         image: "/projects/Dashboard_Capture.webp",
         tags: [TAGS.NEXT, TAGS.TAILWIND],
     },
+    {
+        title: "Task To-Do App",
+        description:
+            "App de control de tareas con localstorage hecho con React.js y bootstrap",
+        link: "https://ajls05.github.io/React-Taskapp-localstorage/",
+        github: "https://github.com/AJLS05/React-Taskapp-localstorage",
+        image: "/projects/TaskApp_Capture.webp",
+        tags: [TAGS.REACT, TAGS.BOOTSTRAP],
+    },
 ];
 ---
 
 {
-    PROJECTS.map(({ image, title, description, tags }) => (
-        <article>
-            <h3 class="text-3xl font-semibold text-blue-200 mb-2">{title}</h3>
+    PROJECTS.map(({ image, title, description, tags, link }) => (
+        <article class="mt-10">
+            <h3 class="text-xl font-semibold text-blue-200 mb-2">{title}</h3>
             <p class="text-lg mb-4 text-pretty">{description}</p>
-            <ul >
+            <a class="text-blue-200 hover:underline mb-4" href={link}>Ver web del proyecto</a>
+            <ul class="flex flex-wrap gap-2 mt-2 rounded-sm">
                 {tags.map((tag) => (
                     <li>
                         <span class="inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-sm font-medium ${tag.class}">
@@ -42,7 +65,7 @@ const PROJECTS = [
                 ))}
             </ul>
             <img
-                class="rounded shadow-2xl shadow-white/10 shadow-blur "
+                class="rounded shadow-2xl shadow-white/10 shadow-blur mt-6"
                 src={image}
                 alt={`Captura de pantalla del proyecto ${image}`}
             />
