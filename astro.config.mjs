@@ -6,5 +6,5 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   site: 'https://AJLS05.github.io',
-  base: '/AJLS05/portfolio.web',
+  base: '/portfolio.web',
 });
